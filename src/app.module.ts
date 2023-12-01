@@ -1,12 +1,23 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { SurveyController } from './survey/survey.controller';
+// import { AppController } from './app.controller';
+// import { AppService } from './app.service';
 import { SurveyModule } from './survey/survey.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ORMConfig } from './configs/typeorm.config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { HelloResolver } from './hello.resolver';
 
 @Module({
-  imports: [SurveyModule],
-  controllers: [AppController, SurveyController],
-  providers: [AppService],
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+    }),
+    TypeOrmModule.forRoot(ORMConfig),
+    SurveyModule,
+  ],
+  controllers: [],
+  providers: [HelloResolver],
 })
 export class AppModule {}

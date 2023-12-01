@@ -9,19 +9,20 @@ import {
 } from '@nestjs/common';
 import { SurveyService } from './survey.service';
 import { Survey } from './entities/survey.entity';
+import { SurveyDto } from './dto/create-survey.dto';
 
 @Controller('survey')
 export class SurveyController {
   constructor(readonly surveyService: SurveyService) {}
 
   @Get()
-  getAllSurvey(): Survey[] {
-    return this.surveyService.getAllSurvey();
+  async getAllSurvey(): Promise<Survey[]> {
+    return await this.surveyService.getAllSurvey();
   }
 
   @Get('/:id')
-  getOneSurvey(@Param('id') surveyId: number): Survey {
-    return this.surveyService.getOneSurvey(surveyId);
+  async getOneSurvey(@Param('id') surveyId: number): Promise<Survey> {
+    return await this.surveyService.getOneSurvey(surveyId);
   }
 
   /**
@@ -31,7 +32,7 @@ export class SurveyController {
    */
 
   @Post()
-  createSurvey(@Body() surveyData) {
+  createSurvey(@Body() surveyData: SurveyDto) {
     return this.surveyService.createSurvey(surveyData);
   }
 

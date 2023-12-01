@@ -1,10 +1,33 @@
-//실제 데이터 모델 추가 필요 typeorm at postgresql
-export class Survey {
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+
+@Entity()
+export class Survey extends BaseEntity {
+  @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
   title: string;
+
+  @Column()
   content: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
+
+  @Column({ default: false })
   completed: boolean;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date | null;
 }
