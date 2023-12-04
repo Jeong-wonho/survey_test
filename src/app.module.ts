@@ -9,6 +9,7 @@ import { PetsModule } from './pets/pets.module';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { RecipesModule } from './recipes/recipes.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AppService } from './app.service';
     }),
     // SurveyModule,
     PetsModule,
+    RecipesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
