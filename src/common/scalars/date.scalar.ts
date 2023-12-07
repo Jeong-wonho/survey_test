@@ -3,7 +3,7 @@ import { Kind, ValueNode } from 'graphql';
 
 //DateScalar 클래스를 정의합니다. 이 클래스는 CustomScalar<number, Date> 인터페이스를 구현합니다.
 //@Scalar('Date', type => Date는 해당 스칼라 타입이 실제로 Javascript의 Date 객체로 매핑되도록 지정합니다);
-@Scalar('Date', (type) => Date)
+@Scalar('Date', () => Date)
 export class DateScalar implements CustomScalar<number, Date> {
   // 스칼라 타입에 대한 설명을 제공합니다.
   description = 'Date custom scalar type';

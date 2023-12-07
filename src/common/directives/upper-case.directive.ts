@@ -6,16 +6,13 @@ export function upperDirectiveTransformer(
   directiveName: string,
 ) {
   return mapSchema(schema, {
-    //mapperkind.object_field에 입력된 key값들이 fieldConfig의 함수를 타게 되는것이지.!
+    //mapperkind.object_field에 동적으로 key값을 할당한다.
     [MapperKind.OBJECT_FIELD]: (fieldConfig) => {
-      console.log('fieldConfig', fieldConfig);
       const upperDirective = getDirective(
         schema,
         fieldConfig,
         directiveName,
       )?.[0];
-
-      console.log('upperDirective', upperDirective);
 
       if (upperDirective) {
         const { resolve = defaultFieldResolver } = fieldConfig;

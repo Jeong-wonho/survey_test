@@ -8,6 +8,9 @@ type Pets {
   kind: String
 }
 
+"""Date custom scalar type"""
+scalar Date
+
 type Query {
   pets: [Pets!]!
 }

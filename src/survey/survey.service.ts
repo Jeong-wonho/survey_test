@@ -12,7 +12,7 @@ export class SurveyService {
     private surveyRepository: Repository<Survey>,
   ) {}
 
-  private surveys: Survey[] = [];
+  //   private surveys: Survey[] = [];
 
   async getAllSurvey() {
     return await this.surveyRepository.find({
